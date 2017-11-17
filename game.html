@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <style media="screen">
+
+      .shape{
+        position: absolute;
+        left: 100px;
+        top: 400px;
+      }
+      body{
+        font-family: "Caviar Dreams";
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <p >Klicken Sie so schnell wie möglich auf die Figur</p>
+    <p >Deine Zeit: <span id="time"></span></p>
+    <div id="shape" class="shape"></div>
+
+
+    <script type="text/javascript">
+
+        var figur = document.getElementById("shape");
+        var start = new Date().getTime();
+        var end = new Date().getTime();
+
+        function getRandomInt (min, max){
+          var randomInt = Math.floor(Math.random()*(max-min+1)+min);
+          return randomInt;
+        }
+
+
+        function showFigure(){
+          var size = getRandomInt(100,400);
+          var x = getRandomInt(0, window.innerWidth - size);
+          var y = getRandomInt(100, window.innerHeight - size );
+          var r = getRandomInt(0, 1)*50;
+
+
+
+          figur.style.background = "#" + Math.floor(0x1000000 * Math.random()).toString(16);
+          figur.style.width = size+"px";
+          figur.style.height = size+"px";
+          figur.style.left = x + "px";
+          figur.style.top = y + "px";
+          figur.style.borderRadius = r + "%";
+          start = new Date().getTime();
+        }
+
+        showFigure();
+
+          figur.onclick = function(){
+            end = new Date().getTime();
+             document.getElementById("time").innerHTML = (end-start)/1000;
+            showFigure();
+          }
+
+
+
+
+// größe als zufallszahl
+// positioniert über zufallszahlen
+// zufallszahl produziert die den borderradius setzt
+// zufällige farbe mit funktion (internet)
+// funktion, die form zusammensetzt
+// anzeigen mit funktion - generatefigure, die baut den dann .... startzeit geht dann los
+// wenn weggeklickt, zeit speichern wie sie jetzt ist und wieder von vorn starten
+// settimeout - zeitverzögerung
+
+</script>
+
+
+  </body>
+</html>
