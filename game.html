@@ -49,15 +49,21 @@
           figur.style.left = x + "px";
           figur.style.top = y + "px";
           figur.style.borderRadius = r + "%";
+          figur.style.display = "block";
           start = new Date().getTime();
         }
 
         showFigure();
 
+        setTimeout(showFigure, Math.random() * 1000);
+
           figur.onclick = function(){
             end = new Date().getTime();
              document.getElementById("time").innerHTML = (end-start)/1000;
             showFigure();
+            setTimeout(showFigure, Math.random() * 1000);
+            figur.style.display = "none";
+
           }
 
 
