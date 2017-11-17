@@ -6,28 +6,39 @@
     <style media="screen">
 
       .shape{
+        background-position: center;
+        background-repeat: no-repeat;
         position: absolute;
         left: 100px;
         top: 400px;
       }
       body{
         font-family: "Caviar Dreams";
+        margin-left: 50px;
+        color: white;
+        font-size: 50px;
+        font-weight: bold;
+        background-image: url("img/busch.jpg");
       }
 
     </style>
   </head>
   <body>
 
-    <p >Klicken Sie so schnell wie möglich auf die Figur</p>
+    <p >Pflücke die Früchte, bevor sie herabfallen!</p>
     <p >Deine Zeit: <span id="time"></span></p>
     <div id="shape" class="shape"></div>
 
 
     <script type="text/javascript">
 
+        var images = ["img/wassermelone.png","img/pineapple.png","img/apple.png","img/orange.png","img/avocado.png"]
+
         var figur = document.getElementById("shape");
         var start = new Date().getTime();
         var end = new Date().getTime();
+
+
 
         function getRandomInt (min, max){
           var randomInt = Math.floor(Math.random()*(max-min+1)+min);
@@ -43,12 +54,13 @@
 
 
 
-          figur.style.background = "#" + Math.floor(0x1000000 * Math.random()).toString(16);
+          // figur.style.background = "#" + Math.floor(0x1000000 * Math.random()).toString(16);
           figur.style.width = size+"px";
           figur.style.height = size+"px";
           figur.style.left = x + "px";
           figur.style.top = y + "px";
-          figur.style.borderRadius = r + "%";
+          figur.style.backgroundImage = "url("+images[getRandomInt(0,images.length-1)]+")";
+          figur.style.backgroundSize = "contain";
           figur.style.display = "block";
           start = new Date().getTime();
         }
